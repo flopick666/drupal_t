@@ -10,7 +10,7 @@ drupal_t/
 ├── form.html                    # Main form HTML structure
 ├── form-styles.css             # Complete styling with 5-state color scheme
 ├── form-validation.js          # JavaScript validation logic
-└── README-FORM.md             # This documentation
+└── README.md                  # This documentation
 ```
 
 ## Features
