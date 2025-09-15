@@ -1,22 +1,31 @@
-// Form Validation Script
+/**
+ * Form Validation Script
+ * Handles real-time validation for sign-up form with required fields
+ */
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('signupForm');
     const requiredFields = form.querySelectorAll('input[required], select[required]');
 
-    // Add real-time validation for each required field
     requiredFields.forEach(field => {
         field.addEventListener('blur', validateField);
         field.addEventListener('input', clearErrorState);
+        
+        if (field.tagName === 'SELECT') {
+            field.addEventListener('change', function() {
+                this.classList.add('user-interacted');
+            });
+        }
     });
 
-    // Form submit validation
+    /**
+     * Main form submit handler with validation
+     */
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
         let isValid = true;
         const errors = [];
 
-        // Validate all required fields
         requiredFields.forEach(field => {
             if (!validateField({ target: field })) {
                 isValid = false;
@@ -25,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (isValid) {
-            // Form is valid - you can submit the data
             console.log('Form is valid and ready to submit');
             showSuccessMessage();
         } else {
@@ -34,21 +42,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    /**
+     * Validates individual form field based on type and requirements
+     */
     function validateField(event) {
         const field = event.target;
         const value = field.value.trim();
         let isValid = true;
         
-        // Remove existing error styling and messages
         clearErrorState({ target: field });
 
-        // Check if required field is empty
         if (field.hasAttribute('required') && !value) {
             showFieldError(field, 'This field is required');
             isValid = false;
         }
         
-        // Additional validation based on field type
         if (value) {
             switch (field.type) {
                 case 'email':
@@ -66,7 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // Show success state for valid fields
         if (isValid && value) {
             field.classList.add('correct');
             field.classList.remove('error');
@@ -79,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const field = event.target;
         field.classList.remove('error', 'correct');
         
-        // Remove error message
         const errorMsg = field.parentNode.querySelector('.error-message');
         if (errorMsg) {
             errorMsg.remove();
@@ -90,13 +96,11 @@ document.addEventListener('DOMContentLoaded', function() {
         field.classList.add('error');
         field.classList.remove('correct');
         
-        // Remove existing error message
         const existingError = field.parentNode.querySelector('.error-message');
         if (existingError) {
             existingError.remove();
         }
         
-        // Add new error message
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message';
         errorDiv.textContent = message;
@@ -108,19 +112,26 @@ document.addEventListener('DOMContentLoaded', function() {
         return label ? label.textContent.replace(' *', '') : field.name;
     }
 
+    /**
+     * Email format validation using regex
+     */
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     }
 
+    /**
+     * Phone number format validation
+     */
     function isValidPhone(phone) {
-        // Basic phone validation - adjust regex as needed
         const phoneRegex = /^[\+]?[\d\s\-\(\)]{10,}$/;
         return phoneRegex.test(phone.replace(/\s/g, ''));
     }
 
+    /**
+     * Display success message after valid form submission
+     */
     function showSuccessMessage() {
-        // Remove any existing messages
         const existingMsg = document.querySelector('.form-message');
         if (existingMsg) existingMsg.remove();
 
@@ -129,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
         successDiv.innerHTML = '✓ Form submitted successfully!';
         form.insertBefore(successDiv, form.firstChild);
 
-        // Remove message after 5 seconds
         setTimeout(() => {
             if (successDiv.parentNode) {
                 successDiv.remove();
@@ -137,8 +147,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
+    /**
+     * Display error summary for failed validation
+     */
     function showErrorSummary(errors) {
-        // Remove any existing messages
         const existingMsg = document.querySelector('.form-message');
         if (existingMsg) existingMsg.remove();
 
@@ -150,8 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         form.insertBefore(errorDiv, form.firstChild);
     }
-
-    // Prevent form submission if Enter is pressed on invalid field
     form.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
             const activeField = document.activeElement;

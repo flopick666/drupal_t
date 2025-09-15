@@ -1,47 +1,45 @@
-/* ===== COLOR SCHEME - UI STATES ===== */
+/**
+ * COLOR SCHEME - 5 UI STATES
+ * Based on UI.png design specifications
+ */
 :root {
-    /* Normal State */
     --color-normal-bg: #2a2d3a;
     --color-normal-border: #4a5568;
     --color-normal-text: #e2e8f0;
     --color-normal-label: #a0aec0;
 
-    /* Hover State */
     --color-hover-bg: #2a2d3a;
     --color-hover-border: #ff6b47;
     --color-hover-text: #e2e8f0;
     --color-hover-label: #ff6b47;
 
-    /* Active State */
     --color-active-bg: #2a2d3a;
     --color-active-border: #4299e1;
     --color-active-text: #e2e8f0;
     --color-active-label: #4299e1;
 
-    /* Error State */
     --color-error-bg: #2a2d3a;
     --color-error-border: #f56565;
     --color-error-text: #e2e8f0;
     --color-error-label: #f56565;
     --color-error-message: #f56565;
 
-    /* Correct/Success State */
     --color-correct-bg: #2a2d3a;
     --color-correct-border: #48bb78;
     --color-correct-text: #e2e8f0;
     --color-correct-label: #48bb78;
 
-    /* Button Colors */
     --button-normal-bg: #ff6b47;
     --button-hover-bg: #e53e3e;
     --button-text: #ffffff;
 
-    /* Background */
     --form-bg: #1a1d29;
     --form-container-bg: #2a2d3a;
 }
 
-/* ===== BASE STYLES ===== */
+/**
+ * BASE STYLES
+ */
 * {
     margin: 0;
     padding: 0;
@@ -72,7 +70,6 @@ h1 {
     color: var(--color-normal-text);
 }
 
-/* ===== FORM SECTIONS ===== */
 .form-section {
     margin-bottom: 32px;
 }
@@ -86,7 +83,6 @@ h1 {
     letter-spacing: 0.5px;
 }
 
-/* ===== FORM LAYOUT ===== */
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -97,7 +93,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* ===== LABELS ===== */
 label {
     display: block;
     margin-bottom: 8px;
@@ -110,7 +105,9 @@ label {
     color: var(--color-error-border);
 }
 
-/* ===== INPUT FIELDS - NORMAL STATE ===== */
+/**
+ * INPUT FIELDS AND FORM ELEMENTS
+ */
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -131,7 +128,6 @@ input[type="tel"]::placeholder {
     color: #718096;
 }
 
-/* ===== SELECT DROPDOWN STYLES ===== */
 select {
     cursor: pointer;
     appearance: none;
@@ -156,8 +152,9 @@ select:invalid {
     color: #718096;
 }
 
-/* ===== INPUT STATES ===== */
-/* Hover State */
+/**
+ * INPUT VALIDATION STATES
+ */
 input[type="text"]:hover,
 input[type="email"]:hover,
 input[type="tel"]:hover,
@@ -172,7 +169,6 @@ select:hover + label {
     color: var(--color-hover-label);
 }
 
-/* Active/Focus State */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
@@ -182,7 +178,6 @@ select:focus {
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
-/* Error State */
 input[type="text"].error,
 input[type="email"].error,
 input[type="tel"].error,
@@ -196,7 +191,6 @@ select.error {
     margin-top: 4px;
 }
 
-/* Correct/Success State */
 input[type="text"].correct,
 input[type="email"].correct,
 input[type="tel"].correct,
@@ -204,7 +198,9 @@ select.correct {
     border-color: var(--color-correct-border);
 }
 
-/* ===== CHECKBOX STYLES ===== */
+/**
+ * CHECKBOX CUSTOM STYLING
+ */
 .checkbox-group {
     display: flex;
     flex-direction: column;
@@ -256,7 +252,9 @@ select.correct {
     font-weight: bold;
 }
 
-/* ===== BUTTON STYLES ===== */
+/**
+ * SUBMIT BUTTON WITH HOVER ANIMATION
+ */
 .submit-btn {
     width: 100%;
     padding: 16px 24px;
@@ -271,7 +269,6 @@ select.correct {
     margin-top: 24px;
 }
 
-/* Button Hover Effect - Size Increase */
 .submit-btn:hover {
     background-color: var(--button-hover-bg);
     transform: scale(1.05);
@@ -282,7 +279,9 @@ select.correct {
     transform: scale(0.98);
 }
 
-/* ===== FORM MESSAGES ===== */
+/**
+ * VALIDATION MESSAGES
+ */
 .form-message {
     padding: 16px;
     border-radius: 6px;
@@ -310,13 +309,11 @@ select.correct {
     margin: 4px 0;
 }
 
-/* ===== REQUIRED FIELD INDICATORS ===== */
 .required {
     color: var(--color-error-border);
     font-weight: bold;
 }
 
-/* Enhanced focus styles for accessibility */
 input:focus,
 select:focus {
     outline: none;
@@ -324,13 +321,21 @@ select:focus {
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
-/* Invalid state for HTML5 validation */
-input:invalid:not(:focus):not(:placeholder-shown),
-select:invalid:not(:focus) {
+input:invalid:not(:focus):not(:placeholder-shown) {
     border-color: var(--color-error-border);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+select:invalid:not(.user-interacted) {
+    border-color: var(--color-normal-border);
+}
+
+select:invalid.user-interacted {
+    border-color: var(--color-error-border);
+}
+
+/**
+ * RESPONSIVE DESIGN
+ */
 @media (max-width: 768px) {
     .form-row {
         grid-template-columns: 1fr;
