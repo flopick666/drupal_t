@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up to get more Updates</title>
+    <link rel="stylesheet" href="form-styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Sign Up to get more Updates</h1>
+        
+        <form id="signupForm">
+            <section class="form-section">
+                <h2>Contact Information</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Your e-mail" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="(123) - - - - - - -" required>
+                </div>
+            </section>
+            
+            <section class="form-section">
+                <h2>Delivery Information</h2>
+                
+                <div class="form-group">
+                    <label for="country">Country <span class="required">*</span></label>
+                    <select id="country" name="country" required>
+                        <option value="">Your country</option>
+                        <option value="US">United States</option>
+                        <option value="CA">Canada</option>
+                        <option value="UK">United Kingdom</option>
+                        <option value="DE">Germany</option>
+                        <option value="FR">France</option>
+                        <option value="IT">Italy</option>
+                        <option value="ES">Spain</option>
+                        <option value="NL">Netherlands</option>
+                        <option value="BE">Belgium</option>
+                        <option value="CH">Switzerland</option>
+                        <option value="AT">Austria</option>
+                        <option value="PL">Poland</option>
+                        <option value="UA">Ukraine</option>
+                        <option value="AU">Australia</option>
+                        <option value="JP">Japan</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City <span class="required">*</span></label>
+                        <input type="text" id="city" name="city" placeholder="Your city" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="zipCode">Zip code <span class="required">*</span></label>
+                        <input type="text" id="zipCode" name="zipCode" placeholder="- - - - - - -" required>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="form-section">
+                <h2>Preferences Confirmation</h2>
+                
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="preferences" value="news">
+                        <span class="checkmark"></span>
+                        I want to receive news, advice and marketing offers from Nestlé
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="preferences" value="newsletter">
+                        <span class="checkmark"></span>
+                        I want to receive a newsletter about price changes
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="preferences" value="personalization">
+                        <span class="checkmark"></span>
+                        I allow to use my data to personalize content and marketing activities
+                    </label>
+                </div>
+            </section>
+            
+            <button type="submit" class="submit-btn">Create a profile</button>
+        </form>
+    </div>
+    
+    <script src="form-validation.js"></script>
+</body>
+</html>

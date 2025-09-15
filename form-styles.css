@@ -1,0 +1,346 @@
+/* ===== COLOR SCHEME - UI STATES ===== */
+:root {
+    /* Normal State */
+    --color-normal-bg: #2a2d3a;
+    --color-normal-border: #4a5568;
+    --color-normal-text: #e2e8f0;
+    --color-normal-label: #a0aec0;
+
+    /* Hover State */
+    --color-hover-bg: #2a2d3a;
+    --color-hover-border: #ff6b47;
+    --color-hover-text: #e2e8f0;
+    --color-hover-label: #ff6b47;
+
+    /* Active State */
+    --color-active-bg: #2a2d3a;
+    --color-active-border: #4299e1;
+    --color-active-text: #e2e8f0;
+    --color-active-label: #4299e1;
+
+    /* Error State */
+    --color-error-bg: #2a2d3a;
+    --color-error-border: #f56565;
+    --color-error-text: #e2e8f0;
+    --color-error-label: #f56565;
+    --color-error-message: #f56565;
+
+    /* Correct/Success State */
+    --color-correct-bg: #2a2d3a;
+    --color-correct-border: #48bb78;
+    --color-correct-text: #e2e8f0;
+    --color-correct-label: #48bb78;
+
+    /* Button Colors */
+    --button-normal-bg: #ff6b47;
+    --button-hover-bg: #e53e3e;
+    --button-text: #ffffff;
+
+    /* Background */
+    --form-bg: #1a1d29;
+    --form-container-bg: #2a2d3a;
+}
+
+/* ===== BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--form-bg);
+    color: var(--color-normal-text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--form-container-bg);
+    padding: 40px;
+    border-radius: 12px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-normal-text);
+}
+
+/* ===== FORM SECTIONS ===== */
+.form-section {
+    margin-bottom: 32px;
+}
+
+.form-section h2 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: var(--color-normal-label);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== FORM LAYOUT ===== */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* ===== LABELS ===== */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-normal-label);
+}
+
+.required {
+    color: var(--color-error-border);
+}
+
+/* ===== INPUT FIELDS - NORMAL STATE ===== */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: var(--color-normal-bg);
+    border: 2px solid var(--color-normal-border);
+    border-radius: 6px;
+    color: var(--color-normal-text);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder {
+    color: #718096;
+}
+
+/* ===== SELECT DROPDOWN STYLES ===== */
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23718096" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+    padding-right: 40px;
+}
+
+select option {
+    background-color: var(--color-normal-bg);
+    color: var(--color-normal-text);
+    padding: 8px 12px;
+}
+
+select option:first-child {
+    color: #718096;
+}
+
+select:invalid {
+    color: #718096;
+}
+
+/* ===== INPUT STATES ===== */
+/* Hover State */
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="tel"]:hover,
+select:hover {
+    border-color: var(--color-hover-border);
+}
+
+input[type="text"]:hover + label,
+input[type="email"]:hover + label,
+input[type="tel"]:hover + label,
+select:hover + label {
+    color: var(--color-hover-label);
+}
+
+/* Active/Focus State */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--color-active-border);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Error State */
+input[type="text"].error,
+input[type="email"].error,
+input[type="tel"].error,
+select.error {
+    border-color: var(--color-error-border);
+}
+
+.error-message {
+    color: var(--color-error-message);
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+/* Correct/Success State */
+input[type="text"].correct,
+input[type="email"].correct,
+input[type="tel"].correct,
+select.correct {
+    border-color: var(--color-correct-border);
+}
+
+/* ===== CHECKBOX STYLES ===== */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--color-normal-text);
+    line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-normal-border);
+    border-radius: 3px;
+    margin-right: 12px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-label:hover .checkmark {
+    border-color: var(--color-hover-border);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background-color: var(--button-normal-bg);
+    border-color: var(--button-normal-bg);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ===== BUTTON STYLES ===== */
+.submit-btn {
+    width: 100%;
+    padding: 16px 24px;
+    background-color: var(--button-normal-bg);
+    border: none;
+    border-radius: 6px;
+    color: var(--button-text);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 24px;
+}
+
+/* Button Hover Effect - Size Increase */
+.submit-btn:hover {
+    background-color: var(--button-hover-bg);
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(255, 107, 71, 0.3);
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+/* ===== FORM MESSAGES ===== */
+.form-message {
+    padding: 16px;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    font-size: 0.875rem;
+}
+
+.success-message {
+    background-color: rgba(72, 187, 120, 0.1);
+    border: 2px solid var(--color-correct-border);
+    color: var(--color-correct-border);
+}
+
+.error-summary {
+    background-color: rgba(245, 101, 101, 0.1);
+    border: 2px solid var(--color-error-border);
+    color: var(--color-error-border);
+}
+
+.error-summary ul {
+    margin: 8px 0 0 20px;
+}
+
+.error-summary li {
+    margin: 4px 0;
+}
+
+/* ===== REQUIRED FIELD INDICATORS ===== */
+.required {
+    color: var(--color-error-border);
+    font-weight: bold;
+}
+
+/* Enhanced focus styles for accessibility */
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--color-active-border);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Invalid state for HTML5 validation */
+input:invalid:not(:focus):not(:placeholder-shown),
+select:invalid:not(:focus) {
+    border-color: var(--color-error-border);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-container {
+        padding: 24px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+}
